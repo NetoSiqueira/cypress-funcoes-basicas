@@ -10,7 +10,7 @@ describe('Cypress Basic',() =>{
 
        cy.title()
        .should('be.equal', 'Campo de Treinamento')
-       .should('contain', 'Campo')
+       .should('contain', 'Campo').debug()
 
        cy.title()
        .should('be.equal', 'Campo de Treinamento')
@@ -19,7 +19,7 @@ describe('Cypress Basic',() =>{
 
     });
 
-    it.only('should find and interact with an element', () => {
+    it('should find and interact with an element', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
         cy.get('#buttonSimple')
         .click()
