@@ -51,4 +51,15 @@ describe('Work with basic elements', () =>{
 
     })
 
+    it.only('RadioButton', () => {
+        cy.get('#formSexoFem')
+        .click()
+        .should('be.checked')
+
+        cy.get('#formSexoMasc')
+        .should('not.be.checked')
+
+        cy.get("[name='formSexo']").should('have.length', 2)
+    });
+
 })
