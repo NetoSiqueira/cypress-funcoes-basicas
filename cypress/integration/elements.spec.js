@@ -62,4 +62,28 @@ describe('Work with basic elements', () =>{
         cy.get("[name='formSexo']").should('have.length', 2)
     });
 
+    it.only('Checkbox', () => {
+        cy.get('#formComidaPizza')
+        .click()
+        .should('be.checked')
+
+        cy.get('[name=formComidaFavorita]')
+        .click({multiple:true})
+        
+        cy.get('#formComidaPizza')
+        .should('not.be.checked')
+
+        cy.get('#formComidaCarne')
+        .should('be.checked')
+    });
+
+    it.only('Combo', () => {
+        cy.get('[data-test=dataEscolaridade]')
+        .select('2graucomp') //Combo normal pode ser passado o nome, como Value
+        .should('have.value', '2graucomp')
+    });
+
+    it.only('Combo multiple', () => {
+        cy.get('[data-testid=dataEsportes]').select(['natacao', 'Corrida']) //Combo multiplo precisa olhar pelo value
+    });
 })
