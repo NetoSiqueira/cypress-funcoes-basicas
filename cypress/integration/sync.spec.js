@@ -26,7 +26,7 @@ describe('Esperas', () =>{
         
     });
 
-    it.only('Uso do find', () => {
+    it('Uso do find', () => {
         cy.get('#buttonList').click()
         cy.get('#lista>li')
         .find('span')
@@ -38,7 +38,7 @@ describe('Esperas', () =>{
         
     });
     
-    it.only('Uso do timeout', () => {
+    it('Uso do timeout', () => {
        // cy.get('#buttonDelay').click()
        // cy.get('#novoCampo', {timeout:3000}).should('exist')
       // cy.get('#novoCampo').should('exist')
@@ -46,5 +46,21 @@ describe('Esperas', () =>{
       //cy.wait(5000)
       cy.get('#lista>li>span', {timeout:30000})
         .should('have.length', 2)
+    });
+    it.only('Click retry', () => {
+        cy.get('#buttonCount')
+        .click()
+        .click()
+        .should('have.value', '111')
+    });
+
+    it.only('Should vs then', () => {
+        cy.get('#buttonList').click() 
+        //cy.wait(5000)
+        cy.get('#lista>li>span').then($el => {
+           // console.log($el)
+            expect($el).to.have.length(1)
+        })
+        //.should('have.length', 1)
     });
 })

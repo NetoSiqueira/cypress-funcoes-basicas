@@ -2,7 +2,7 @@
 
 describe('Cypress Basic',() =>{
 
-    it('Should visit a page and assert title', () => {
+    it.only('Should visit a page and assert title', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html');
 
       // const title = cy.title();
@@ -10,12 +10,25 @@ describe('Cypress Basic',() =>{
 
        cy.title()
        .should('be.equal', 'Campo de Treinamento')
-       .should('contain', 'Campo').debug()
+       .should('contain', 'Campo')
 
        cy.title()
        .should('be.equal', 'Campo de Treinamento')
        .and('contain', 'Campo')
 
+       cy.title().then(title =>{
+            console.log(title)
+       })
+
+       let syncTitle
+
+       cy.title().then(title =>{
+        console.log(title)
+        cy.get('#formNome').type(title)
+
+        syncTitle = title
+        cy.get('[data-cy=dataSobrenome]').type(syncTitle)
+   })
 
     });
 
