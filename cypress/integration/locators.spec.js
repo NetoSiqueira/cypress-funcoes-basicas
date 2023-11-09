@@ -14,4 +14,10 @@ describe('teste', () =>{
         cy.get('table#tabelaUsuarios > tbody > tr:eq(0) >td:nth-child(3) > input').click()
         cy.get('#tabelaUsuarios td:contains(\'Doutorado\'):eq(0) ~ td:eq(3) input').type('teste')
     });
+
+
+    it('using xpath', () => {
+        cy.xpath('//input[@id="alert"]').click()
+        cy.xpath('//textarea[@id="elementosForm:sugestoes"]')
+    });
 })
